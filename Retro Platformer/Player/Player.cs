@@ -17,6 +17,8 @@ public class Player : KinematicBody2D
     private float maxGrv;
     [Export]
     private float minGrv;
+    [Export]
+    private float slp = 30;
     [Export] private float jumpHeight = 650;
     [Export] private float minJump = 150;
     private Vector2 velocity;
@@ -135,6 +137,7 @@ public class Player : KinematicBody2D
 
     public void GroundMove() 
     {
+        gsp += slp * Mathf.Sin(rot);
         if (Input.IsActionPressed("move_left")) 
         {
         if (gsp > 0) gsp -= dec;
