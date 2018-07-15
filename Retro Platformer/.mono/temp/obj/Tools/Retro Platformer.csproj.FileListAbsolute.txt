@@ -1,0 +1,6 @@
+C:\Users\otter\Desktop\My Projects\Games\Godot Games\Retro Platformer\.mono\temp\bin\Tools\Retro Platformer.dll
+C:\Users\otter\Desktop\My Projects\Games\Godot Games\Retro Platformer\.mono\temp\bin\Tools\Retro Platformer.pdb
+C:\Users\otter\Desktop\My Projects\Games\Godot Games\Retro Platformer\.mono\temp\obj\Tools\Retro Platformer.csprojResolveAssemblyReference.cache
+C:\Users\otter\Desktop\My Projects\Games\Godot Games\Retro Platformer\.mono\temp\obj\Tools\Retro Platformer.csproj.CoreCompileInputs.cache
+C:\Users\otter\Desktop\My Projects\Games\Godot Games\Retro Platformer\.mono\temp\obj\Tools\Retro Platformer.dll
+C:\Users\otter\Desktop\My Projects\Games\Godot Games\Retro Platformer\.mono\temp\obj\Tools\Retro Platformer.pdb

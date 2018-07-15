@@ -1,0 +1,128 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Free Pixel Art Forest/PNG/Background layers/Layer_0006_4.png" type="Texture" id=2]
+[ext_resource path="res://Free Pixel Art Forest/PNG/Background layers/Layer_0005_5.png" type="Texture" id=3]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node2D
+
+func _ready():
+	print(Engine.get_frames_per_second())"
+
+[node name="Scene" type="Node2D" index="0"]
+
+script = SubResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="0"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -233.216, 67.6143, 62.1531, 67.6143, 130.315, 90.3351, 207.566, 113.056, 284.816, 106.24, 350.706, 88.063, 402.964, 56.254, 543.832, 47.1657, 739.23, 58.5261, 809.665, 40.3495, 886.915, 44.8936, 1204.52, 193.989, 1341.14, 247.116, 1587.8, 216.757, 1830.66, 148.452, 3773.59, 133.272, 1925.53, 247.116, 1386.67, 311.627, 939.173, 217.571, -276.386, 199.395 )
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D" index="1"]
+
+polygon = PoolVector2Array( -233.216, 67.6143, 62.1531, 67.6143, 130.315, 90.3351, 207.566, 113.056, 284.816, 106.24, 350.706, 88.063, 402.964, 56.254, 543.832, 47.1657, 739.23, 58.5261, 809.665, 40.3495, 886.915, 44.8936, 1204.52, 193.989, 1341.14, 247.116, 1587.8, 216.757, 1830.66, 148.452, 3773.59, 133.272, 1925.53, 247.116, 1386.67, 311.627, 939.173, 217.571, -276.386, 199.395 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Player" parent="." index="1" instance=ExtResource( 1 )]
+
+position = Vector2( 0, 19.8477 )
+acc = 7.0
+frc = 16.0
+
+[node name="Camera2D" type="Camera2D" parent="Player" index="5"]
+
+position = Vector2( 0, -78.9057 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = false
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 20.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Smoothing", "Transform" ]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Player" index="6"]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+scroll_offset = Vector2( 0, 0 )
+scroll_base_offset = Vector2( 0, 0 )
+scroll_base_scale = Vector2( 1, 1 )
+scroll_limit_begin = Vector2( 0, 0 )
+scroll_limit_end = Vector2( 0, 0 )
+scroll_ignore_camera_zoom = false
+_sections_unfolded = [ "Scroll" ]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Player/ParallaxBackground" index="0"]
+
+motion_scale = Vector2( 0.5, 0.5 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 980, 0 )
+_sections_unfolded = [ "Motion", "Transform" ]
+
+[node name="Layer_0006_4" type="Sprite" parent="Player/ParallaxBackground/ParallaxLayer2" index="0"]
+
+position = Vector2( -314.692, -633.974 )
+texture = ExtResource( 2 )
+centered = false
+region_rect = Rect2( 0, 0, 60000, 1200 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Player/ParallaxBackground" index="1"]
+
+position = Vector2( -453.156, -52.8682 )
+motion_scale = Vector2( 0.8, 0.8 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 928, 0 )
+_sections_unfolded = [ "Motion", "Transform" ]
+
+[node name="Layer_0005_5" type="Sprite" parent="Player/ParallaxBackground/ParallaxLayer" index="0"]
+
+position = Vector2( 32.7279, -571.48 )
+texture = ExtResource( 3 )
+centered = false
+region_rect = Rect2( 0, 0, 15000, 1000 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+
