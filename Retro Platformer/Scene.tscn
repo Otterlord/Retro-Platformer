@@ -49,8 +49,8 @@ invert_border = 100.0
 
 position = Vector2( 0, 19.8477 )
 acc = 7.0
-frc = 16.0
-slp = 20.0
+frc = 7.0
+slp = 16.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" index="5"]
 
