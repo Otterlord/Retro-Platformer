@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Free Pixel Art Forest/PNG/Background layers/Layer_0006_4.png" type="Texture" id=2]
-[ext_resource path="res://Free Pixel Art Forest/PNG/Background layers/Layer_0005_5.png" type="Texture" id=3]
+[ext_resource path="res://Ghz1.PNG" type="Texture" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Free Pixel Art Forest/PNG/Background layers/Layer_0006_4.png" type="Texture" id=3]
+[ext_resource path="res://Free Pixel Art Forest/PNG/Background layers/Layer_0005_5.png" type="Texture" id=4]
 
 [sub_resource type="GDScript" id=1]
 
@@ -15,7 +16,13 @@ func _ready():
 
 script = SubResource( 1 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." index="0"]
+[node name="Ghz1" type="Sprite" parent="." index="0"]
+
+visible = false
+position = Vector2( -171.272, 3.78341 )
+texture = ExtResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="1"]
 
 input_pickable = false
 collision_layer = 1
@@ -27,32 +34,20 @@ bounce = 0.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" index="0"]
 
+position = Vector2( 13.8381, -24.4142 )
+scale = Vector2( 1.14152, 1.14152 )
 build_mode = 0
-polygon = PoolVector2Array( -197.906, 29.2685, 62.1531, 67.6143, 130.315, 90.3351, 207.566, 113.056, 284.816, 106.24, 350.706, 88.063, 402.964, 56.254, 543.832, 47.1657, 739.23, 58.5261, 809.665, 40.3495, 886.915, 44.8936, 1204.52, 193.989, 1341.14, 247.116, 1587.8, 216.757, 1830.66, 148.452, 3773.59, 133.272, 1925.53, 247.116, 1386.67, 311.627, 939.173, 217.571, -276.386, 199.395, -320.105, -116.718 )
+polygon = PoolVector2Array( -247.143, -105.402, -177.569, -114.099, -185.003, 23.2002, -165.651, 72.1961, -117.87, 82.4874, -77.4403, 78.8119, 104.862, 72.9312, 176.166, 69.2558, 202.228, 65.9007, 226.888, 60.4346, 245.709, 51.1435, 265.112, 38.3819, 278.912, 20.5752, 293.046, 1.6273, 298.149, -29.7571, 295.251, -50.5642, 283.829, -69.0132, 266.357, -88.4266, 245.002, -101.045, 214.912, -108.811, 186.762, -99.1039, 171.232, -88.4266, 153.76, -76.7786, 135.736, -58.6502, 138.222, -64.3125, 99.4148, -94.9975, 88.5848, -53.4825, 85.015, -119.663, 256.291, -147.596, 364.35, -43.2133, 312.893, 82.4874, -209.022, 122.917, -204.489, 103.449 )
 
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D" index="1"]
-
-polygon = PoolVector2Array( -197.906, 29.2685, 62.1531, 67.6143, 130.315, 90.3351, 207.566, 113.056, 284.816, 106.24, 350.706, 88.063, 402.964, 56.254, 543.832, 47.1657, 739.23, 58.5261, 809.665, 40.3495, 886.915, 44.8936, 1204.52, 193.989, 1341.14, 247.116, 1587.8, 216.757, 1830.66, 148.452, 3773.59, 133.272, 1925.53, 247.116, 1386.67, 311.627, 939.173, 217.571, -276.386, 199.395, -320.105, -116.718 )
-uv = PoolVector2Array(  )
-color = Color( 1, 1, 1, 1 )
-vertex_colors = PoolColorArray(  )
-offset = Vector2( 0, 0 )
-antialiased = false
-texture = null
-texture_offset = Vector2( 0, 0 )
-texture_scale = Vector2( 1, 1 )
-texture_rotation_degrees = 0.0
-invert_enable = false
-invert_border = 100.0
-
-[node name="Player" parent="." index="1" instance=ExtResource( 1 )]
+[node name="Player" parent="." index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 0, 19.8477 )
-acc = 7.0
-frc = 7.0
-slp = 16.0
+frc = 16.0
+grv = 29.0
+maxGrv = 770.0
+slp = 15.0
 
-[node name="Camera2D" type="Camera2D" parent="Player" index="5"]
+[node name="Camera2D" type="Camera2D" parent="Player" index="3"]
 
 position = Vector2( 0, -78.9057 )
 anchor_mode = 1
@@ -79,8 +74,9 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Smoothing", "Transform" ]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="Player" index="6"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Player" index="4"]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -104,7 +100,7 @@ _sections_unfolded = [ "Motion", "Transform" ]
 [node name="Layer_0006_4" type="Sprite" parent="Player/ParallaxBackground/ParallaxLayer2" index="0"]
 
 position = Vector2( -314.692, -633.974 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 centered = false
 region_rect = Rect2( 0, 0, 60000, 1200 )
 _sections_unfolded = [ "Offset", "Region", "Transform" ]
@@ -120,7 +116,7 @@ _sections_unfolded = [ "Motion", "Transform" ]
 [node name="Layer_0005_5" type="Sprite" parent="Player/ParallaxBackground/ParallaxLayer" index="0"]
 
 position = Vector2( 32.7279, -571.48 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 centered = false
 region_rect = Rect2( 0, 0, 15000, 1000 )
 _sections_unfolded = [ "Offset", "Transform" ]

@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 14.2, 31 )
+extents = Vector2( 18.7162, 31 )
 
 [node name="Player" type="KinematicBody2D" index="0"]
 
@@ -23,6 +23,7 @@ dec = 80.0
 grv = 30.0
 maxGrv = 800.0
 minGrv = 10.0
+slp = 30.0
 jumpHeight = 700.0
 minJump = 300.0
 
@@ -32,21 +33,25 @@ texture = ExtResource( 2 )
 offset = Vector2( 3.57304, -0.934166 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+[node name="HitBox" type="CollisionShape2D" parent="." index="1"]
 
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="LSensor" type="RayCast2D" parent="." index="2"]
+[node name="Sensors" type="Node2D" parent="." index="2"]
 
-position = Vector2( -13, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="LSensor" type="RayCast2D" parent="Sensors" index="0"]
+
+position = Vector2( -17, 0 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 50 )
 collision_mask = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="CSensor" type="RayCast2D" parent="." index="3"]
+[node name="CSensor" type="RayCast2D" parent="Sensors" index="1"]
 
 enabled = true
 exclude_parent = true
@@ -54,9 +59,9 @@ cast_to = Vector2( 0, 50 )
 collision_mask = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="RSensor" type="RayCast2D" parent="." index="4"]
+[node name="RSensor" type="RayCast2D" parent="Sensors" index="2"]
 
-position = Vector2( 13, 0 )
+position = Vector2( 17, 0 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 50 )
