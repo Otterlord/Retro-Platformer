@@ -10761,7 +10761,7 @@
         </member>
         <member name="P:Godot.InputEventMouseButton.Factor">
             <summary>
-            TO TALK in PR, reduz said : i think it's used for apple touch but i don't remember what it does
+            Magnitude. Amount (or delta) of the event. Used for scroll events, indicates scroll amount (vertically or horizontally). Only supported on some platforms, sensitivity varies by platform. May be 0 if not supported.
             </summary>
         </member>
         <member name="P:Godot.InputEventMouseButton.ButtonIndex">
@@ -14795,6 +14795,7 @@
         </member>
         <member name="P:Godot.Particles.Preprocess">
             <summary>
+            Amount of time to preprocess the particles before animation starts. Lets you start the animation some time after particles have started emitting.
             </summary>
         </member>
         <member name="P:Godot.Particles.SpeedScale">
@@ -14822,6 +14823,7 @@
         </member>
         <member name="P:Godot.Particles.VisibilityAabb">
             <summary>
+            The [AABB] that determines the area of the world part of which needs to be visible on screen for the particle system to be active.
             </summary>
         </member>
         <member name="P:Godot.Particles.LocalCoords">
@@ -14841,26 +14843,32 @@
         </member>
         <member name="P:Godot.Particles.DrawPasses">
             <summary>
+            The number of draw passes when rendering particles.
             </summary>
         </member>
         <member name="P:Godot.Particles.DrawPass1">
             <summary>
+            [Mesh] that is drawn for the first draw pass.
             </summary>
         </member>
         <member name="P:Godot.Particles.DrawPass2">
             <summary>
+            [Mesh] that is drawn for the second draw pass.
             </summary>
         </member>
         <member name="P:Godot.Particles.DrawPass3">
             <summary>
+            [Mesh] that is drawn for the third draw pass.
             </summary>
         </member>
         <member name="P:Godot.Particles.DrawPass4">
             <summary>
+            [Mesh] that is drawn for the fourth draw pass.
             </summary>
         </member>
         <member name="M:Godot.Particles.Restart">
             <summary>
+            Restarts the particle emmission, clearing existing particles.
             </summary>
         </member>
         <member name="M:Godot.Particles.CaptureAabb">
@@ -19359,6 +19367,8 @@
         <member name="T:Godot.Skeleton">
             <summary>
             Skeleton provides a hierarchical interface for managing bones, including pose, rest and animation (see [Animation]). Skeleton will support rag doll dynamics in the future.
+            The overall transform of a bone with respect to the skeleton is determined by the following hierarchical order: rest pose, custom pose and pose.
+            Note that "global pose" below refers to the overall transform of the bone with respect to skeleton, so it not the actual global/world transform of the bone.
             </summary>
         </member>
         <member name="M:Godot.Skeleton.AddBone(System.String)">
@@ -19373,7 +19383,7 @@
         </member>
         <member name="M:Godot.Skeleton.GetBoneName(System.Int32)">
             <summary>
-            Return the name of the bone at index "index"
+            Return the name of the bone at index "index".
             </summary>
         </member>
         <member name="M:Godot.Skeleton.GetBoneParent(System.Int32)">
@@ -19435,7 +19445,7 @@
         </member>
         <member name="M:Godot.Skeleton.GetBonePose(System.Int32)">
             <summary>
-            Return the pose transform for bone "bone_idx".
+            Return the pose transform of the specified bone. Pose is applied on top of the custom pose, which is applied on top the rest pose.
             </summary>
         </member>
         <member name="M:Godot.Skeleton.SetBonePose(System.Int32,Godot.Transform)">
@@ -19449,10 +19459,12 @@
         </member>
         <member name="M:Godot.Skeleton.GetBoneGlobalPose(System.Int32)">
             <summary>
+            Return the overall transform of the specified bone, with respect to the skeleton. Being relative to the skeleton frame, this is not the actual "global" transform of the bone.
             </summary>
         </member>
         <member name="M:Godot.Skeleton.GetBoneCustomPose(System.Int32)">
             <summary>
+            Return the custom pose of the specified bone. Custom pose is applied on top of the rest pose.
             </summary>
         </member>
         <member name="M:Godot.Skeleton.SetBoneCustomPose(System.Int32,Godot.Transform)">
@@ -19461,6 +19473,7 @@
         </member>
         <member name="M:Godot.Skeleton.GetBoneTransform(System.Int32)">
             <summary>
+            Return the combination of custom pose and pose. The returned transform is in skeleton's reference frame.
             </summary>
         </member>
         <member name="T:Godot.Sky">
@@ -22963,7 +22976,7 @@
         </member>
         <member name="M:Godot.TreeItem.RemoveChild(Godot.Object)">
             <summary>
-            Removes the child TreeItem at index [code]index[/code].
+            Removes the given child TreeItem.
             </summary>
         </member>
         <member name="M:Godot.TreeItem.SetSelectable(System.Int32,System.Boolean)">
@@ -23515,7 +23528,7 @@
             <summary>
             A Viewport creates a different view into the screen, or a sub-view inside another viewport. Children 2D Nodes will display on it, and children Camera 3D nodes will render on it too.
             Optionally, a viewport can have its own 2D or 3D world, so they don't share what they draw with other viewports.
-            If a viewport is a child of a [Control], it will automatically take up its same rect and position, otherwise they must be set manually.
+            If a viewport is a child of a [ViewportContainer], it will automatically take up its size, otherwise it must be set manually.
             Viewports can also choose to be audio listeners, so they generate positional audio depending on a 2D or 3D camera child of it.
             Also, viewports can be assigned to different screens in case the devices have multiple screens.
             Finally, viewports can also behave as render targets, in which case they will not be visible unless the associated texture is used to draw.
@@ -23763,8 +23776,15 @@
             <summary>
             </summary>
         </member>
+        <member name="T:Godot.ViewportTexture">
+            <summary>
+            Displays the content of a [Viewport] node as a dynamic [Texture]. This can be used to mix controls, 2D, and 3D elements in the same scene.
+            To create a ViewportTexture in code, use the [method Viewport.get_texture] method on the target viewport.
+            </summary>
+        </member>
         <member name="P:Godot.ViewportTexture.ViewportPath">
             <summary>
+            The path to the [Viewport] node to display. This is relative to the scene root, not to the node which uses the texture.
             </summary>
         </member>
         <member name="T:Godot.VisibilityEnabler">

@@ -1,49 +1,36 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Player/Player.cs" type="Script" id=1]
+[ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/stick guy.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 18.7162, 31 )
+radius = 18.3327
+height = 25.8152
 
-[node name="Player" type="KinematicBody2D" index="0"]
-
+[node name="Player" type="KinematicBody2D"]
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
+motion/sync_to_physics = false
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
-spd = 600.0
-acc = 9.0
-frc = 50.0
-dec = 80.0
-grv = 30.0
-maxGrv = 800.0
-minGrv = 10.0
-slp = 30.0
-jumpHeight = 700.0
-minJump = 300.0
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
-
+[node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 offset = Vector2( 3.57304, -0.934166 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="HitBox" type="CollisionShape2D" parent="." index="1"]
-
+[node name="HitBox" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+_sections_unfolded = [ "Transform", "shape" ]
+
+[node name="Sensors" type="Node2D" parent="."]
 _sections_unfolded = [ "Transform" ]
 
-[node name="Sensors" type="Node2D" parent="." index="2"]
-
-_sections_unfolded = [ "Transform" ]
-
-[node name="LSensor" type="RayCast2D" parent="Sensors" index="0"]
-
+[node name="LSensor" type="RayCast2D" parent="Sensors"]
 position = Vector2( -17, 0 )
 enabled = true
 exclude_parent = true
@@ -51,21 +38,18 @@ cast_to = Vector2( 0, 50 )
 collision_mask = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="CSensor" type="RayCast2D" parent="Sensors" index="1"]
-
+[node name="CSensor" type="RayCast2D" parent="Sensors"]
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 50 )
 collision_mask = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="RSensor" type="RayCast2D" parent="Sensors" index="2"]
-
+[node name="RSensor" type="RayCast2D" parent="Sensors"]
 position = Vector2( 17, 0 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 50 )
 collision_mask = 1
 _sections_unfolded = [ "Transform" ]
-
 
